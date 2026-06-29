@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Andrea Plumbing Solutions"
+version = "1.0.0"
+id = "artifacts/andrea-plumbing"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 26133
+
+[services.development]
+run = "pnpm --filter @workspace/andrea-plumbing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/andrea-plumbing", "run", "build" ]
+publicDir = "artifacts/andrea-plumbing/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "26133"
+BASE_PATH = "/"

@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "xbZ931oVAdSEhtNdDTuKS"
+uri = "file://artifacts/andrea-plumbing/public/work-heater.png"
+type = "image"
+title = "Water heater installation"
+
+[[generated]]
+id = "dfnw6Nnm173L5IQ9yBmUJ"
+uri = "file://artifacts/andrea-plumbing/public/work-faucet.png"
+type = "image"
+title = "Kitchen faucet installation"
+
+[[generated]]
+id = "vSE7w07vet6SHv25WeR6E"
+uri = "file://artifacts/andrea-plumbing/public/work-pipes.png"
+type = "image"
+title = "Clean pipe repair"
+
+[[generated]]
+id = "oGF1d5qVvoEnwGPYkpIdE"
+uri = "file://artifacts/andrea-plumbing/public/hero-bg.png"
+type = "image"
+title = "Hero background plumber"
