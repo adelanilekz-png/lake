@@ -63,10 +63,10 @@ export function ContactForm({
     setIsLoading(true);
     try {
       await (window as any).emailjs.send(
-        'service_uqo6rqs',
-        'template_gsr6koc',
+        "service_uqo6rqs",
+        "template_gsr6koc",
         data,
-        'pSbtCCrsj9bhim7yQ'
+        "pSbtCCrsj9bhim7yQ",
       );
 
       setSubmitted(true);
