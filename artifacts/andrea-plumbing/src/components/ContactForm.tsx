@@ -62,15 +62,12 @@ export function ContactForm({
   async function onSubmit(data: ContactFormValues) {
     setIsLoading(true);
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (!res.ok) {
-        throw new Error("Failed to send");
-      }
+      await (window as any).emailjs.send(
+        'service_uqo6rqs',
+        'template_default',
+        data,
+        'pSbtCCrsj9bhim7yQ'
+      );
 
       setSubmitted(true);
     } catch {
