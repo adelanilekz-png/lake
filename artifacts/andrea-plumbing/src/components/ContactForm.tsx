@@ -64,7 +64,7 @@ export function ContactForm({
     try {
       await (window as any).emailjs.send(
         'service_uqo6rqs',
-        'template_default',
+        'template_gsr6koc',
         data,
         'pSbtCCrsj9bhim7yQ'
       );
