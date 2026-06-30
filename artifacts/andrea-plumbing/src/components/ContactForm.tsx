@@ -26,14 +26,24 @@ import { CheckCircle2, Loader2 } from "lucide-react";
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
   phone: z.string().min(10, "Valid phone number is required"),
-  email: z.string().email("Valid email is required").optional().or(z.literal("")),
+  email: z
+    .string()
+    .email("Valid email is required")
+    .optional()
+    .or(z.literal("")),
   serviceType: z.string().min(1, "Please select a service"),
   message: z.string().optional(),
 });
 
 type ContactFormValues = z.infer<typeof formSchema>;
 
-export function ContactForm({ className = "", inputClassName = "" }: { className?: string; inputClassName?: string }) {
+export function ContactForm({
+  className = "",
+  inputClassName = "",
+}: {
+  className?: string;
+  inputClassName?: string;
+}) {
   const { toast } = useToast();
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -79,8 +89,23 @@ export function ContactForm({ className = "", inputClassName = "" }: { className
       <div className="flex flex-col items-center justify-center gap-4 py-8 text-center">
         <CheckCircle2 className="h-16 w-16 text-green-400" />
         <h4 className="text-2xl font-bold text-white">Request Sent!</h4>
-        <p className="text-slate-300">We've received your request and will call you back shortly. For urgent issues, call <a href="tel:5875850023" className="text-secondary font-bold">(587) 585-0023</a>.</p>
-        <button onClick={() => { setSubmitted(false); form.reset(); }} className="text-sm text-slate-400 underline mt-2">Submit another request</button>
+        <p className="text-slate-300">
+          We've received your request and will call you back shortly. For urgent
+          issues, call{" "}
+          <a href="tel:5875850023" className="text-secondary font-bold">
+            (587) 585-0023
+          </a>
+          .
+        </p>
+        <button
+          onClick={() => {
+            setSubmitted(false);
+            form.reset();
+          }}
+          className="text-sm text-slate-400 underline mt-2"
+        >
+          Submit another request
+        </button>
       </div>
     );
   }
@@ -90,24 +115,24 @@ export function ContactForm({ className = "", inputClassName = "" }: { className
   return (
     <Form {...form}>
       <form
-      name="contact"
-      data-netlify="true"
-      onSubmit={form.handleSubmit(onSubmit)}
-        className= "space-y-4
-        >
-      <input type="hidden" name="form-name" value="contact" />
-      <FormField
-        control={form.control}
-        name="name"
-        render={({ field }) => (
-          <FormItem>
+        name="contact"
+        data-netlify="true"
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-4"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Full Name</FormLabel>
-            <FormControl>
-              <Input placeholder="John Doe" {...field} className={inputCls}  />
+              <FormControl>
+                <Input placeholder="John Doe" {...field} className={inputCls} />
               </FormControl>
             </FormItem>
           )}
-          />
+        />
         <FormField
           control={form.control}
           name="phone"
@@ -115,7 +140,13 @@ export function ContactForm({ className = "", inputClassName = "" }: { className
             <FormItem>
               <FormLabel>Phone Number</FormLabel>
               <FormControl>
-                <Input placeholder="(587) 585-0023" type="tel" {...field} className={inputCls} data-testid="input-phone" />
+                <Input
+                  placeholder="(587) 585-0023"
+                  type="tel"
+                  {...field}
+                  className={inputCls}
+                  data-testid="input-phone"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -129,7 +160,13 @@ export function ContactForm({ className = "", inputClassName = "" }: { className
             <FormItem>
               <FormLabel>Email (Optional)</FormLabel>
               <FormControl>
-                <Input placeholder="you@email.com" type="email" {...field} className={inputCls} data-testid="input-email" />
+                <Input
+                  placeholder="you@email.com"
+                  type="email"
+                  {...field}
+                  className={inputCls}
+                  data-testid="input-email"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -144,7 +181,10 @@ export function ContactForm({ className = "", inputClassName = "" }: { className
               <FormLabel>Service Needed</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger className={inputCls} data-testid="select-service">
+                  <SelectTrigger
+                    className={inputCls}
+                    data-testid="select-service"
+                  >
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
                 </FormControl>
@@ -190,7 +230,13 @@ export function ContactForm({ className = "", inputClassName = "" }: { className
           className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold text-lg h-12 shadow-lg hover:shadow-xl transition-all"
           data-testid="button-submit"
         >
-          {isLoading ? <><Loader2 className="h-5 w-5 animate-spin mr-2" /> Sending...</> : "Get Service Now"}
+          {isLoading ? (
+            <>
+              <Loader2 className="h-5 w-5 animate-spin mr-2" /> Sending...
+            </>
+          ) : (
+            "Get Service Now"
+          )}
         </Button>
       </form>
     </Form>
