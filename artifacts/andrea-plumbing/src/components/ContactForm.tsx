@@ -89,21 +89,25 @@ export function ContactForm({ className = "", inputClassName = "" }: { className
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className={`space-y-4 ${className}`} data-testid="contact-form">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
+      <form
+      name="contact"
+      data-netlify="true"
+      onSubmit={form.handleSubmit(onSubmit)}
+        className= "space-y-4
+        >
+      <input type="hidden" name="form-name" value="contact" />
+      <FormField
+        control={form.control}
+        name="name"
+        render={({ field }) => (
+          <FormItem>
               <FormLabel>Full Name</FormLabel>
-              <FormControl>
-                <Input placeholder="John Doe" {...field} className={inputCls} data-testid="input-name" />
+            <FormControl>
+              <Input placeholder="John Doe" {...field} className={inputCls}  />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
-        />
-
+          />
         <FormField
           control={form.control}
           name="phone"
